@@ -5,7 +5,8 @@ import practice.todo.model.Task;
 
 public class ToDoListImpl implements ToDoList {
 private Task[] tasks; // Массив для хранения задач
-private int size; // Текущий размер массива
+private int size;// Текущий размер массива
+    private int capacity;
 public ToDoListImpl(int capacity){
     tasks = new Task[capacity]; // Создание массива заданной емкости
 }
@@ -55,5 +56,10 @@ public ToDoListImpl(int capacity){
     public void goOut() {
         System.out.println("Exit the application.");
 
+    }
+
+    @Override
+    public int quantity() {
+        return quantity();
     }
 }

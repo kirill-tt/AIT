@@ -7,5 +7,5 @@ public interface ToDoList {
     void viewAllTask();
     void deleteTask (int taskNumber);
     void goOut();
-
+int quantity();
 }
