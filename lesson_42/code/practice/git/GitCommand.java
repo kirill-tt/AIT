@@ -13,5 +13,5 @@ public class GitCommand {
 // git checkout -// переключение между ветками
 // git checkout -b new_branch
     // git checkout -b new_branch main
-
+// git push -u origin название_ветки // выгрузить ветку na github
 }
