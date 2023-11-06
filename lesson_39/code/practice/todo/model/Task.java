@@ -37,11 +37,10 @@ private  int taskNumber;
 
     @Override
     public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", task='" + task + '\'' +
-                ", taskNumber=" + taskNumber +
-                '}';
+        return
+                "id# " + id +
+                "| task (" + task +
+                ")| taskNumber/" + taskNumber ;
     }
 
     @Override
@@ -64,6 +63,7 @@ private  int taskNumber;
 
     @Override
     public int compareTo(Task o) {
-        return Integer.compare( taskNumber, o.getTaskNumber() );
+        return Integer.compare( this.taskNumber, o.taskNumber);
+
     }
 }

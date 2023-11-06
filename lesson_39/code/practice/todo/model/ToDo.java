@@ -27,7 +27,7 @@ ADD(1,"Add a note"), SEE(2,"See all posts"), DEL(3, "Delete entry (by number)"),
     public void setAction(String action) {
         this.action = action;
     }
-    public void printMenu () {
+    public static void printMenu () {
         System.out.println("Menu: ");
         for (ToDo item : ToDo.values()) {
             System.out.println(item.getNumber() + " - " + item.getAction());
