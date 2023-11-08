@@ -1,14 +1,18 @@
 package practice.todo.model;
 
-public class Task implements Comparable<Task>{
-private int id;
-private String task;
-private  int taskNumber;
+import java.time.LocalDateTime;
 
-    public Task(int id, String task, int taskNumber) {
+public class Task implements Comparable<Task> {
+    private int id;
+    private String task;
+    private int taskNumber;
+    private LocalDateTime docDate;
+
+    public Task(int id, String task, int taskNumber, LocalDateTime docDate) {
         this.id = id;
         this.task = task;
         this.taskNumber = taskNumber;
+        this.docDate = docDate;
     }
 
     public int getId() {
@@ -35,12 +39,12 @@ private  int taskNumber;
         this.taskNumber = taskNumber;
     }
 
-    @Override
-    public String toString() {
-        return
-                "id# " + id +
-                "| task (" + task +
-                ")| taskNumber/" + taskNumber ;
+    public LocalDateTime getDocDate() {
+        return docDate;
+    }
+
+    public void setDocDate(LocalDateTime docDate) {
+        this.docDate = docDate;
     }
 
     @Override
@@ -62,8 +66,16 @@ private  int taskNumber;
     }
 
     @Override
+    public String toString() {
+        return "Task | " + "taskNumber/ " + taskNumber +
+                " | id/" + id +
+                " | task ( " + task +
+                " ) | docDate: " + docDate;
+    }
+
+    @Override
     public int compareTo(Task o) {
-        return Integer.compare( this.taskNumber, o.taskNumber);
+        return Integer.compare( this.taskNumber, o.taskNumber );
 
     }
 }

@@ -41,9 +41,14 @@ public class ArchiveImpl implements Archive {
 
         for (int i = 0; i < size; i++) {
             if(doc[i].getDocFolderId() == docFolderId && doc[i].getDocumentId() == documentId){
+
                 // надвигаем массив на найденную позицию i
                 System.arraycopy( doc, i +1, doc, i, size -1 -i );
+
                 doc[--size] = null;
+                // После удаления, сортируем документы по docFolderId
+                Arrays.sort(doc, 0, size, comparator);
+
                 return true;
 
             }
@@ -76,11 +81,24 @@ public class ArchiveImpl implements Archive {
     }
 
     @Override
-    public Documents[] getAllDocumentFromArchive(int docFolderId) {
-        return findByPredicate(p-> docFolderId == p.getDocFolderId());
+    public Documents[] getAllDocumentFromArchive() {
+        Documents[] allDocuments = new Documents[size];
+        int j = 0;
+        for (int i = 0; i < size; i++) {
+            if (doc[i] != null) {
+                allDocuments[j] = doc[i];
+                j++;
+            }
+        }
+        return Arrays.copyOf(allDocuments, j);
     }
-    private Documents[]  findByPredicate(Predicate<Documents> predicate){
-         Documents[] res = new Documents[size];
+
+   @Override
+   public Documents[] getAllDocumentFromArchiveFolders(int docFolderId) {
+        return findByPredicate(p-> docFolderId == p.getDocFolderId());// передаем предикат (условия для поиска)
+    }
+    private Documents[]  findByPredicate(Predicate<Documents> predicate){// возвращает массив найденных объектов
+         Documents[] res = new Documents[size];// объявили массив избыточной длины
         int j = 0; // счетчик найденных document
         for (int i = 0; i < size; i++) {
             if (predicate.test( doc[i] )){
@@ -93,6 +111,12 @@ public class ArchiveImpl implements Archive {
         // заполнили массив, но в нем после j идут null
         return Arrays.copyOf( res, j );// вернули обрезанный массив, без элементов null
     }
+
+
+
+
+
+
     @Override
     public Documents[] getDocumentBetweenDate(LocalDate dateFrom, LocalDate dateTo) {
         Documents pattern = new Documents(0,Integer.MIN_VALUE, null,null, dateFrom.atStartOfDay()); // вводим объектную переменную
@@ -101,11 +125,16 @@ public class ArchiveImpl implements Archive {
         pattern = new Documents(0, Integer.MAX_VALUE, null, null,  LocalDateTime.of( dateTo, LocalTime.MAX ) ); // находим правый край
         int to = -Arrays.binarySearch(doc, 0, size, pattern, comparator) - 1;
         // to = to >= 0 ? to : -to - 1;
-        return Arrays.copyOfRange(doc, from, to); // Range - диапазон, создаем новый массив с нужными фото
+        return Arrays.copyOfRange(doc, from, to); // Range - диапазон, создаем новый массив
     }
 
     @Override
     public int size() {
+        return size;
+    }
+
+    @Override
+    public int quantity() {
         return size;
     }
 }

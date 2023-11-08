@@ -41,21 +41,21 @@ public class ToDoListImpl implements ToDoList {
     // Метод для удаления задачи
 
     @Override
-    public void deleteTask(int taskNumber) {
-        if (taskNumber < 0 || taskNumber >= size) {
-            System.out.println("Wrong task ID.");// Сообщение, если указан некорректный ID
-            return;
+    public boolean deleteTask(int taskNumber) {
+        for (int i = 0; i < size; i++) {
+            if (tasks[i].getTaskNumber() == taskNumber ) {// Нашли задачу, которую нужно удалить
+                // Сдвиг всех задач с более высокими номерами на один назад
+                for (int j = i; j < size - 1; j++) {
+                    tasks[j] = tasks[j + 1];
+                    tasks[j].setTaskNumber(j + 1);// Заменяем текущую задачу следующей
+                    tasks[j].setId(j + 1); // Обновляем ID задачи
+                }
+                tasks[--size] = null; // Удаление последней (дублированной) задачи
+                return true; // Задача успешно удалена
+            }
         }
-        for (int i = taskNumber; i < size - 1; i++) {
-            tasks[i] = tasks[i + 1];
-        }
-        tasks[size -1] = null;
-        size--;
-        System.out.println("The task was successfully deleted.");
-
-
+        return false; // Задача не была найдена, возвращаем false
     }
-
     @Override
     public void goOut() {
         System.out.println("Exit the application.");

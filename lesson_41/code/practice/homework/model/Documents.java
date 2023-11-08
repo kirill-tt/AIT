@@ -62,12 +62,12 @@ public class Documents  implements Comparable<Documents> {
 
     @Override
     public String toString() {
-        return "Documents | " +
-                "docFolderId / " + docFolderId +
-                "| documentId / " + documentId +
-                "| titles | " + titles + '\'' +
-                "| url / " + url + '\'' +
-                "| docDate / " + docDate;
+        return "Documents : " +
+                "docFolderId /" + docFolderId +
+                "|| documentId /" + documentId +
+                " || titles / " + titles +
+                " || url / " + url +
+                " || docDate : " + docDate;
     }
 
     @Override
@@ -90,6 +90,6 @@ public class Documents  implements Comparable<Documents> {
         return res!=0 ? res : Integer.compare( documentId, o.documentId );// тернарный оператор
         //if(res!=0){return res} else {return Integer.compare( documentId,o.documentId
     }
-    // конструктор
+
 
 }
