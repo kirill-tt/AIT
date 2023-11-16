@@ -2,30 +2,31 @@ package practice.company_v1.tests;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import practice.company_v1.dao.Company;
+import practice.company_v1.dao.Company
+        ;
 import practice.company_v1.dao.CompanyImpl;
-import practice.company_v1.model.Employee;
-import practice.company_v1.model.Manager;
-import practice.company_v1.model.SalesManager;
-import practice.company_v1.model.Worker;
+import practice.company_v1.model.Employee1;
+import practice.company_v1.model.Manager1;
+import practice.company_v1.model.SalesManager1;
+import practice.company_v1.model.Worker1;
 
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CompanyImplTest {
-    Company company;
-    Employee[] e;
+class CompanyImpl1Test {
+    CompanyImpl company;
+    Employee1[] e;
 
 
     @BeforeEach
     void setUp() {
         company = new CompanyImpl( 5 );
-        e = new Employee[4];
-        e[0] = new Manager( 101, "John", "Smith", 45, 160, 5000, 5 );
-        e[1] = new SalesManager( 102, "Anna", "Black", 36, 160, 25000, 0.1 );
-        e[2] = new SalesManager( 103, "Thomas", "White", 28, 160, 30000, 0.1 );
-        e[3] = new Worker( 104, "Gans", "Bauer", 30, 80, 5 );
+        e = new Employee1[4];
+        e[0] = new Manager1( 101, "John", "Smith", 45, 160, 5000, 5 );
+        e[1] = new SalesManager1( 102, "Anna", "Black", 36, 160, 25000, 0.1 );
+        e[2] = new SalesManager1( 103, "Thomas", "White", 28, 160, 30000, 0.1 );
+        e[3] = new Worker1( 104, "Gans", "Bauer", 30, 80, 5 );
         // добавим наши элементы массива в company
         for (int i = 0; i < e.length; i++) {
             company.addEmployee( e[i] );
@@ -34,17 +35,18 @@ class CompanyImplTest {
     }
 
     @Test
+
     void addEmployeeTest() {
 // мы не можем добавить null
         assertFalse( company.addEmployee( null ) );
         // не может добавить уже существующий
         assertFalse( company.addEmployee( e[1] ) );
-        Employee employee1 = new Manager( 105, "Ivan", "Dubin", 55, 160, 6000, 6 );// создали нового сотрудника
+        Employee1 employee1 = new Manager1( 105, "Ivan", "Dubin", 55, 160, 6000, 6 );// создали нового сотрудника
         assertTrue( company.addEmployee( employee1 ) );// добавили нового сотрудника
         assertEquals( 5, company.quantity() );// теперь в компании 5 сотрудников
         // создаем еще одного сотрудника
-        Employee employee2 = new Manager( 106, "Peter", "Dubin", 55, 160, 6000, 6 );
-        assertFalse( company.addEmployee( employee2 ) );// не может превысить capacity
+        Employee1 employee12 = new Manager1( 106, "Peter", "Dubin", 55, 160, 6000, 6 );
+        assertFalse( company.addEmployee( employee12 ) );// не может превысить capacity
     company.printEmployees();
     }
 
@@ -96,16 +98,16 @@ class CompanyImplTest {
 
    @Test
     void findEmployeesHoursGreaterThanTest(){
-        Employee []actual = company.findEmployeesHoursGreaterThan( 100 );
-        Employee [] expected = {e[0],e[1],e[2]};
+        Employee1[]actual = company.findEmployeesHoursGreaterThan( 100 );
+        Employee1[] expected = {e[0],e[1],e[2]};
         assertArrayEquals( expected,actual );
 
     }
     @Test
     void findEmployeesSalaryRangeTest(){
 
-        Employee[]actual = company.findEmployeesSalaryRange(2900,6000 );
-Employee[] expected = {e[0],e[2]};
+        Employee1[]actual = company.findEmployeesSalaryRange(2900,6000 );
+Employee1[] expected = {e[0],e[2]};
 assertArrayEquals( expected,actual );
         System.out.println(Arrays.toString(actual));
 

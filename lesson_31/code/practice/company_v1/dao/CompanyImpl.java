@@ -1,44 +1,44 @@
 package practice.company_v1.dao;
 
-import practice.company_v1.model.Employee;
-import practice.company_v1.model.SalesManager;
+import practice.company_v1.model.Employee1;
+import practice.company_v1.model.SalesManager1;
 
 
-public class CompanyImpl implements Company {
+public class Company1Impl implements Company1 {
     // поля которые описывают компанию
-    private Employee[] employees;// создали массив работников
+    private Employee1[] employee1s;// создали массив работников
     private int size;
 
     // конструктор
-    public CompanyImpl(int capacity) {
-        employees = new Employee[capacity];// capacity maksimaljniy razmer companii
+    public Company1Impl(int capacity) {
+        employee1s = new Employee1[capacity];// capacity maksimaljniy razmer companii
     }
 
     @Override
-    public boolean addEmployee(Employee employee) {
+    public boolean addEmployee(Employee1 employee1) {
         //не добавляем null, не превышено capacity, не добавляем уже существующий
 
 
-        if (employee == null || size == employees.length || findEmployee( employee.getId() ) != null) {
+        if (employee1 == null || size == employee1s.length || findEmployee( employee1.getId() ) != null) {
             return false;
         }
 
         //employees[size] = employee;// новый элемент
         //size++;
-        employees[size++] = employee;// постфиксная операция
+        employee1s[size++] = employee1;// постфиксная операция
         return true;
     }
 
     @Override
-    public Employee removeEmployee(int id) {
+    public Employee1 removeEmployee(int id) {
         for (int i = 0; i < size; i++) {
-            if (employees[i].getId() == id) {
-                Employee victim = employees[i];// убрали найденный элемент в переменную
+            if (employee1s[i].getId() == id) {
+                Employee1 victim = employee1s[i];// убрали найденный элемент в переменную
                 // employees[i] = employees[size-1];// на место найденного поставили последующего существующего в массиве
                 //employees[size-1] = null; // обнулили последнего
                 //size--;
-                employees[i] = employees[--size];// префиксная операция
-                employees[size] = null;// обнуляет последний элемент
+                employee1s[i] = employee1s[--size];// префиксная операция
+                employee1s[size] = null;// обнуляет последний элемент
                 return victim;
             }
 
@@ -47,10 +47,10 @@ public class CompanyImpl implements Company {
     }
 
     @Override
-    public Employee findEmployee(int id) {
+    public Employee1 findEmployee(int id) {
         for (int i = 0; i < size; i++) {
-            if (employees[i].getId() == id) {// нашелся элемент массива у которого совпал ID
-                return employees[i];// вернули найденный элемент массива типа Employee
+            if (employee1s[i].getId() == id) {// нашелся элемент массива у которого совпал ID
+                return employee1s[i];// вернули найденный элемент массива типа Employee
             }
 
         }
@@ -68,7 +68,7 @@ public class CompanyImpl implements Company {
     public double totalSalary() {
         double res = 0;
         for (int i = 0; i < size; i++) {
-            res += employees[i].calcSalary();
+            res += employee1s[i].calcSalary();
 
         }
         return res;
@@ -84,9 +84,9 @@ public class CompanyImpl implements Company {
     public double totalSales() {
         double res = 0;
         for (int i = 0; i < size; i++) {
-            if (employees[i] instanceof SalesManager) {
-                SalesManager salesManager = (SalesManager) employees[i];// провели кастинг
-                res += salesManager.getSalesValue();
+            if (employee1s[i] instanceof SalesManager1) {
+                SalesManager1 salesManager1 = (SalesManager1) employee1s[i];// провели кастинг
+                res += salesManager1.getSalesValue();
 
             }
 
@@ -97,7 +97,7 @@ public class CompanyImpl implements Company {
     @Override
     public void printEmployees() {
         for (int i = 0; i <= size; i++) {
-            System.out.println( employees[i] );
+            System.out.println( employee1s[i] );
 
         }
 
@@ -108,21 +108,21 @@ public class CompanyImpl implements Company {
     // Потом создать массив под это количество,
     // и только потом его заполнить.
     @Override
-    public Employee[] findEmployeesHoursGreaterThan(int hours) {
+    public Employee1[] findEmployeesHoursGreaterThan(int hours) {
 int count = 0;
 // считаем сколько будет лементов массива по условию
         for (int i = 0; i <size; i++) {
-            if (employees[i].getHours() > hours) {
+            if (employee1s[i].getHours() > hours) {
                 count++;
 
             }
         }
 
-        Employee [] res = new Employee[count]; //создаем массив
+        Employee1[] res = new Employee1[count]; //создаем массив
         //
         for (int i = 0, j = 0; j <res.length ; i++) {
-            if (employees[i].getHours() > hours){
-                res[j++] = employees[i];
+            if (employee1s[i].getHours() > hours){
+                res[j++] = employee1s[i];
             }
         }
 
@@ -130,18 +130,18 @@ int count = 0;
     }
 
     @Override
-    public Employee[] findEmployeesSalaryRange(int minSalary, int maxSalary) {
+    public Employee1[] findEmployeesSalaryRange(int minSalary, int maxSalary) {
         int count = 0;
         for (int i = 0; i < size; i++) {
-            if(employees[i].calcSalary() > minSalary && employees[i].calcSalary()< maxSalary){
+            if(employee1s[i].calcSalary() > minSalary && employee1s[i].calcSalary()< maxSalary){
                 count++;
             }
 
         }
-        Employee [] res = new Employee[count]; //создаем массив
+        Employee1[] res = new Employee1[count]; //создаем массив
         for (int i = 0, j = 0; j <res.length ; i++) {
-            if (employees[i].calcSalary() > minSalary && employees[i].calcSalary()< maxSalary){
-                res[j++] = employees[i];
+            if (employee1s[i].calcSalary() > minSalary && employee1s[i].calcSalary()< maxSalary){
+                res[j++] = employee1s[i];
             }
         }
 
