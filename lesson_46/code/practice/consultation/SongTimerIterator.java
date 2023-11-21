@@ -1,3 +1,5 @@
+package practice.consultation;
+
 import java.time.LocalTime;
 import java.util.Random;
 

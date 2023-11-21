@@ -48,7 +48,7 @@ public abstract class  Product {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Product product)) return false;
+        if (!(o instanceof Product1 product)) return false;
 
         return barcode == product.barcode;
     }

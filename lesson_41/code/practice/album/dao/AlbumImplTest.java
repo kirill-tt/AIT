@@ -86,7 +86,7 @@ class AlbumImplTest {
         Photo[] expected = {ph[3], ph[4], ph[5]};
         Photo[] actual = album.getAllPhotoFromAlbum( 2 ); // выбрали альбом album = 2
         Arrays.sort( actual );// сортируем массив
-        assertArrayEquals( expected, actual );
+        assertEquals( expected, actual );
     }
 
     @Test

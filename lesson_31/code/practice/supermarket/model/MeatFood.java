@@ -1,8 +1,6 @@
 package practice.supermarket.model;
 
-import java.time.LocalDate;
-
-public class MeatFood extends Product{
+public class MeatFood extends Product1 {
     private String meatType; // Приватное поле для хранения типа мяса продукта
 private boolean bioType;
 

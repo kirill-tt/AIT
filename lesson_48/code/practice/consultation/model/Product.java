@@ -1,4 +1,4 @@
-package model;
+package practice.consultation.model;
 import java.time.LocalDate;
 
 public class Product {

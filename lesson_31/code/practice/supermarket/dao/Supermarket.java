@@ -1,6 +1,6 @@
 package practice.supermarket.dao;
 
-import practice.supermarket.model.Product;
+import practice.supermarket.model.Product1;
 
 //- добавить продукт
 //- удалить продукт
@@ -10,11 +10,11 @@ import practice.supermarket.model.Product;
 //- объем продаж
 //- напечатать список продуктов
 public interface Supermarket {
-    boolean addProduct(Product product);
+    boolean addProduct(Product1 product);
 
-  Product removeProduct(int barCode);
+  Product1 removeProduct(int barCode);
 
-    Product findProduct();
+    Product1 findProduct();
     int quantityProduct();
     double totalPrice();// общая цена
 

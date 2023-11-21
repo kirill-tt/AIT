@@ -44,6 +44,7 @@ public class AlbumImpl implements Album {
                 // надвигаем массив на найденную позицию i
                 System.arraycopy( photos, i +1, photos, i, size -1 -i );
             photos[--size] = null;
+
             return true;
 
             }

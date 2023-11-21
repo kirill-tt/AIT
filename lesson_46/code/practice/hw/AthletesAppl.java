@@ -1,19 +1,19 @@
 package practice.hw;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
 
-public class SportsResultsApp {
+public class AthletesAppl {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner( System.in );
-        ArrayList<Athlete> athletes = new ArrayList<>();
+        Scanner scanner = new Scanner( System.in ); // Создаем Scanner для считывания ввода пользователя
+        ArrayList<Athletes> athletes = new ArrayList<>(); // Создаем ArrayList для хранения данных о спортсменах
 
         // Ввод результатов спортсменов
-        for (int i = 1; i <= 2; i++) {
-            try {
+        for (int i = 1; i <= 5; i++) {
+            try { // Защита от неправильного ввода
+                // Ввод данных о спортсмене
                 System.out.println( "Enter results for athlete #" + i );
                 System.out.print( "LastName: " );
                 String lastName = scanner.next();
@@ -26,26 +26,25 @@ public class SportsResultsApp {
                 System.out.print( "Result (in seconds): " );
                 double resultInSeconds = scanner.nextDouble();
 
-                athletes.add( new Athlete( lastName, firstName, registrationNumber, club, resultInSeconds ) );
-            } catch (Exception e) {
+                // Создание Athletes и добавление его в список athletes
+                athletes.add( new Athletes( lastName, firstName, registrationNumber, club, resultInSeconds ) );
+            } catch (Exception e) { // В случае некорректного ввода
                 System.out.println( "Wrong input! Please try again" );
                 scanner.nextLine(); // Чистим ввод после ошибочного ввода
-                i--; // Повторяем ввод для того же спортсмена
+                i--; // Уменьшаем счетчик i для повторного ввода данных для того же спортсмена
             }
         }
-                // Сортировка спортсменов по результатам
-                athletes.sort( Comparator.comparingDouble( o -> o.resultInSeconds ) );
+        // Сортировка спортсменов по результатам
+        athletes.sort( Comparator.comparingDouble( o -> o.resultInSeconds ) );
 
-                // Вывод итогового протокола
-                System.out.println( "\nFinal competition protocol:" );
-                System.out.println( "---------------------------------------------------------------" );
+        // Вывод итогового протокола
+        System.out.println( "Final competition protocol:" );
+        System.out.println( "---------------------------------------------------------------" );
 
-                System.out.println( "---------------------------------------------------------------" );
-
-                for (Athlete athlete : athletes) {
-                    System.out.println( athlete );
-                }
-            }
+        for (Athletes athlete : athletes) { // Цикл проходится по списку спортсменов
+            System.out.println( athlete );//  Выводит информацию о каждом спортсмене
         }
+    }
+}
 
 

@@ -1,7 +1,7 @@
-package dao;
+package practice.consultation.dao;
 
 
-import model.Product;
+import practice.consultation.model.Product;
 
 public interface Supermarket extends Iterable<Product> {
     boolean addProduct(Product product);

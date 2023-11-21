@@ -1,8 +1,6 @@
 package practice.supermarket.model;
 
-import java.time.LocalDate;
-
-public class MilkFood extends Product{
+public class MilkFood extends Product1 {
     private String milkType; // Приватное поле для хранения типа молока продукта
     private double fat; // Приватное поле для хранения содержания жира в молоке продукта
 

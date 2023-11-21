@@ -1,22 +1,22 @@
 package practice.hw;
 
 import java.util.Objects;
-
-public class Athlete {
+ // Fields
+public class Athletes {
     String lastName;
     String firstName;
     int registrationNumber;
     String club;
     double resultInSeconds;
-
-    public Athlete(String lastName, String firstName, int registrationNumber, String club, double resultInSeconds) {
+// Constructor
+    public Athletes(String lastName, String firstName, int registrationNumber, String club, double resultInSeconds) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.registrationNumber = registrationNumber;
         this.club = club;
         this.resultInSeconds = resultInSeconds;
     }
-
+// Getter and Setter
     public String getLastName() {
         return lastName;
     }
@@ -56,26 +56,26 @@ public class Athlete {
     public void setResultInSeconds(double resultInSeconds) {
         this.resultInSeconds = resultInSeconds;
     }
-
+//Equals and HashCode
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Athlete athlete)) return false;
-        return Double.compare( resultInSeconds, athlete.resultInSeconds )== 0;
+        if (!(o instanceof Athletes athletes)) return false;
+        return Double.compare( resultInSeconds, athletes.resultInSeconds )== 0;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash( resultInSeconds );
     }
-
+// toString
     @Override
     public String toString() {
-        return "Athlete :" +
-                "LastName : " + lastName + '\'' +
-                "| firstName : " + firstName + '\'' +
-                "| registrationNumber : " + registrationNumber +
-                "| club : " + club + '\'' +
-                "| resultInSeconds = " + resultInSeconds ;
+        return "Athlete | " +
+                "LastName: " + lastName +
+                "| FirstName: " + firstName +
+                "| RegistrationNumber № " + registrationNumber +
+                "| Club: " + club +
+                "| ResultInSeconds = " + resultInSeconds ;
     }
 }

@@ -57,15 +57,16 @@ public class ToDoAppl {
                         } else {
                             System.out.println( "Failed to delete task. Task number may be invalid." );
                         }
-                        break;
+                       // break;
                     }
                     case 4 -> {
                         toDoList.goOut();
-                        //System.exit( 0 ); // Выйти из приложения
+                        System.exit( 0 ); // Выйти из приложения
+                        exitRequested = true;// запрос na выхода true
                     }
                     default -> {
                         System.out.println( "Wrong choice." );
-                        //exitRequested = true;// запрос na выхода true
+
                     }
                 }
             } catch (Exception e) {

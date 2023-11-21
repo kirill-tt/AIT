@@ -11,7 +11,7 @@ import practice.company.model.Worker;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CompanyImplTest {
+class CompanyImpl1Test {
 
     Company company;
     Employee[] employee;

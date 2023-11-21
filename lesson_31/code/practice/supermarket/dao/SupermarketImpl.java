@@ -1,15 +1,15 @@
 package practice.supermarket.dao;
 
-import practice.supermarket.model.Product;
+import practice.supermarket.model.Product1;
 
-public class SupermarketImpl implements Supermarket{
-    Product []products;// создали массив продуктов
+public class SupermarketImpl implements Supermarket1 {
+    Product1[]products;// создали массив продуктов
     private int size;
-    public SupermarketImpl (int capacity){products = new Product[capacity];// capacity максимальный размер
+    public SupermarketImpl (int capacity){products = new Product1[capacity];// capacity максимальный размер
 
     }
     @Override
-    public boolean addProduct(Product product) {
+    public boolean addProduct(Product1 product) {
         if(products == null || size == products.length || findProduct()!= null){
             return false;
         }
@@ -21,10 +21,10 @@ public class SupermarketImpl implements Supermarket{
     }
 
     @Override
-    public Product removeProduct(int barCode) {
+    public Product1 removeProduct(int barCode) {
         for (int i = 0; i < size; i++) {
             if(products[i].getBarcode() == barCode){
-                Product victim = products [i];// убрали найденный элемент в переменную
+                Product1 victim = products [i];// убрали найденный элемент в переменную
                 products[i] = products[size-1];// на место найденного поставили последующего существующего в массиве
                 products[size-1] = null; // обнулили последнего
                 size--;
@@ -37,7 +37,7 @@ public class SupermarketImpl implements Supermarket{
     }
 
     @Override
-    public Product findProduct() {
+    public Product1 findProduct() {
         for (int i = 0; i <size ; i++) {
             long barCode = 0;
             if(products[i].getBarcode() == barCode){// нашелся элемент массива у которого совпал ID
