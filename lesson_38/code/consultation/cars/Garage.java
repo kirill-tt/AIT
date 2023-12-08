@@ -2,19 +2,26 @@ package consultation.cars;
 
 import consultation.cars.model.Car;
 
+import java.util.stream.Stream;
+
 public interface Garage {
+
+    //переделать методы, которые возвращают массив Car[]
+    // на методы, которые возвращают перечеслимые структуры;
+    //использовать stream для циклов.
     boolean addCar(Car car);
 
     Car removeCar(String regNumber);
 
     Car findCarByRegNumber(String regNumber);
 
-    Car[] findCarsByModel(String model);
+    Stream<Car> findCarsByModel(String model);
 
-    Car[] findCarsByCompany(String company);
+    Stream<Car> findCarsByCompany(String company);
 
-    Car[] findCarsByEngine(double min, double max);
+    Stream<Car> findCarsByEngineRange(double min, double max);
 
-    Car[] findCarsByColor(String color);
+    Stream<Car> findCarsByColor(String color);
+
     int size();
 }

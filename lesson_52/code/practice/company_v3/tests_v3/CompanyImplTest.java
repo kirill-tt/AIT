@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import practice.company_v3.dao_v3.Company;
 import practice.company_v3.dao_v3.CompanyArrayListImpl;
 import practice.company_v3.dao_v3.CompanyHashSetImpl;
+import practice.company_v3.dao_v3.CompanyTreeSetImpl;
 import practice.company_v3.model_v3.Employee;
 import practice.company_v3.model_v3.Manager;
 import practice.company_v3.model_v3.SalesManager;
