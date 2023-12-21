@@ -1,0 +1,4 @@
+Currency Code,Amount in Euro
+BTC,1238.3532
+XRP,911.9999999999999
+RUB,-500.0
